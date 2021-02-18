@@ -1,0 +1,7 @@
+2           Parameters
+Mach AOA
+0               Local C/S (0: No     1:Yes)
+0               Running Loads (0: No    1: Yes)
+0               Mass model (0: No      1: Yes)
+0               Envelope (0: No     1: Yes)
+3   12  12      Aerodynamic Model (Elements | Grids | Distributions)
