@@ -66,41 +66,33 @@ class Amodel:
                 # defining element center
                 self.elements[i, k] = sum(vertices[:, k]) / self.mesh
 
-            self.elements[i, 3:6] = self.calculate_panel_area(vertices)
+            self.elements[i, 3:6] = Amodel.calculate_panel_area(vertices)
             i += 1
 
+    @staticmethod
     def calculate_panel_area(vertices):
         num_edges = len(vertices)
 
         if num_edges == 3:
-            return calculate_triangle_area(vertices)
+            return Amodel.calculate_tri_area(vertices)
         elif num_edges == 4:
-            return calculate_polygon_area(vertices)
+            return Amodel.calculate_quad_area(vertices)
         else:
-            raise ValueError("Invalid number of edges. Only 3 or 4 edges supported.")
+            raise ValueError("Invalid number of panel edges. Only 3 or 4 edges supported.")
 
-    def calculate_triangle_area(vertices):
+    @staticmethod
+    def calculate_tri_area(vertices):
         # Calculate the cross product of two edges
-        edge1 = vertices[1] - vertices[0]
-        edge2 = vertices[2] - vertices[0]
-        cross_product = np.cross(edge1, edge2)
+        vector1 = vertices[1] - vertices[0]
+        vector2 = vertices[2] - vertices[0]
+        return 0.5 * np.cross(vector1, vector2)
 
-        # Calculate the magnitude of the cross product
-        area = 0.5 * np.linalg.norm(cross_product)
-
-        return area
-
-    def calculate_polygon_area(vertices):
-        # Divide the polygon into triangles and sum their areas
-        total_area = 0.0
-        num_vertices = len(vertices)
-
-        for i in range(num_vertices - 2):
-            triangle_vertices = np.array([vertices[0], vertices[i + 1], vertices[i + 2]])
-            triangle_area = calculate_triangle_area(triangle_vertices)
-            total_area += triangle_area
-
-        return total_area
+    @staticmethod
+    def calculate_quad_area(vertices):
+        vector1 = vertices[2] - vertices[0]
+        vector2 = vertices[3] - vertices[1]
+        return 0.5 * np.cross(vector1, vector2)
 
     def load_coefficients(self, filename):
         pass
+
