@@ -1,0 +1,9 @@
+2     Number of Points
+0     Coordinate System
+x   y   z
+0   0   0
+1   1   1
+2     Stations
+1      Axis  (0: x   1: y   2: z)
+0.6
+0.8
