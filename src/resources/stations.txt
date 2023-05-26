@@ -1,3 +1,4 @@
+1     Number of Lines
 2     Number of Points
 0     Coordinate System
 x   y   z

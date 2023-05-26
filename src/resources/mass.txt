@@ -1,0 +1,2 @@
+5     Number of Grids
+x   y   z   mass
