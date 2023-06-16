@@ -1,9 +1,23 @@
-3    Number of Deflections
--5   Deflection
-2   3   3   Number of Machs | Alphas | Betas
-Mach    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.60    0.60    0.60    0.60    0.60    0.60    0.60    0.60    0.60
-Alpha -10.00    0.00   10.00  -10.00    0.00   10.00  -10.00    0.00   10.00  -10.00    0.00   10.00  -10.00    0.00   10.00  -10.00    0.00   10.00
-Beta  -10.00  -10.00  -10.00    0.00    0.00    0.00   10.00   10.00   10.00  -10.00  -10.00  -10.00    0.00    0.00    0.00   10.00   10.00   10.00
+2           Number of Machs
+
+0.00        Mach
+3           Number of Alphas
+3           Number of Betas
+Alpha -10.00    0.00   10.00  -10.00    0.00   10.00  -10.00    0.00   10.00
+Beta  -10.00  -10.00  -10.00    0.00    0.00    0.00   10.00   10.00   10.00
+Grid   Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp
+0
+1
+2
+3
+4
+5
+
+0.60        Mach
+3           Number of Alphas
+3           Number of Betas
+Alpha -10.00    0.00   10.00  -10.00    0.00   10.00  -10.00    0.00   10.00
+Beta  -10.00  -10.00  -10.00    0.00    0.00    0.00   10.00   10.00   10.00
 Grid   Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp      Cp
 0
 1

@@ -1,7 +1,11 @@
 import numpy as np
+import os
+import sys
+from aero import Aero
+from cs import CS
 
 
-class Amodel:
+class Model:
     def __int__(self):
         self.n_grids = None
         self.n_elements = None
@@ -10,6 +14,21 @@ class Amodel:
         self.cps = None
         self.elements = None
         self.mesh = None
+        self.coefs = None
+        self.control = np.empty(3)  # mass | deflection | local cs
+
+    def read_config(self):
+        abs_path = sys.path[0]
+        base_name = os.path.dirname(abs_path)
+        options_path = os.path.join(base_name, "src/resources/config.txt")
+        with open(options_path, "r") as file:
+            line = file.readline().split()
+            # mass config
+            self.control[0] = int(line[0])
+            # number of deflections
+            line = file.readline().split()
+            self.control[1] = int(line[0])
+        file.close()
 
     def load_grids_txt(self, file_path):
 
@@ -66,7 +85,7 @@ class Amodel:
                 # defining element center
                 self.elements[i, k] = sum(vertices[:, k]) / self.mesh
 
-            self.elements[i, 3:6] = Amodel.calculate_panel_area(vertices)
+            self.elements[i, 3:6] = Model.calculate_panel_area(vertices)
             i += 1
 
     @staticmethod
@@ -74,9 +93,9 @@ class Amodel:
         num_edges = len(vertices)
 
         if num_edges == 3:
-            return Amodel.calculate_tri_area(vertices)
+            return Model.calculate_tri_area(vertices)
         elif num_edges == 4:
-            return Amodel.calculate_quad_area(vertices)
+            return Model.calculate_quad_area(vertices)
         else:
             raise ValueError("Invalid number of panel edges. Only 3 or 4 edges supported.")
 
@@ -93,6 +112,10 @@ class Amodel:
         vector2 = vertices[3] - vertices[1]
         return 0.5 * np.cross(vector1, vector2)
 
-    def load_coefficients(self, filename):
-        pass
+    def load_coefs(self, filename):
+        if self.control[1] == 1:
+            pass
+        elif self.control[1] > 1:
+            pass
+
 

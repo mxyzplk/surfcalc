@@ -1,2 +1,3 @@
-0         Mass File
-
+0              Mass File
+1              Deflections
+1              Local CS
