@@ -1,7 +1,7 @@
 import numpy as np
 import os
 import sys
-from aero import Aero
+from aero import Set
 from cs import CS
 
 
@@ -14,7 +14,7 @@ class Model:
         self.cps = None
         self.elements = None
         self.mesh = None
-        self.coefs = None
+        self.coefs = []
         self.control = np.empty(3)  # mass | deflection | local cs
 
     def read_config(self):
@@ -66,10 +66,10 @@ class Model:
 
     def define_elements(self):
         # define elements array containing center coordinates(x, y, z), total area, axy, axz, ayz
-        self.elements = np.empty(self.n_elements, 7)
+        self.elements = np.empty([self.n_elements, 7])
 
         # panel vertices
-        vertices = np.empty(self.mesh, 3)
+        vertices = np.empty([self.mesh, 3])
 
         i = 0
         while i < self.n_elements:
@@ -112,10 +112,5 @@ class Model:
         vector2 = vertices[3] - vertices[1]
         return 0.5 * np.cross(vector1, vector2)
 
-    def load_coefs(self, filename):
-        if self.control[1] == 1:
-            pass
-        elif self.control[1] > 1:
-            pass
-
-
+    def load_coefs(self, file_path):
+        pass
