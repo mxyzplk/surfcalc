@@ -7,16 +7,18 @@ class Set:
         self.ndefs = ndefs
         self.nmachs = np.empty(ndefs)
         self.machs = None
-        self.defs = None
-    def set_distributions(self):
+        self.coefs = None
+    def set_machs(self):
         pass
 class Aero:
-    def __int__(self):
+    def __int__(self, mach):
         self.alpha = None
         self.beta = None
         self.nalphas = None
         self.nbetas = None
         self.cps = None
+        self.mach = mach
+        self.deflection = None
 
     def set_variables(self, ngrids, nalphas, nbetas):
         self.alpha = np.empty(int(nalphas))
